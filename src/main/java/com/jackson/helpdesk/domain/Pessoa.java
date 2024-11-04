@@ -27,6 +27,8 @@ public abstract class Pessoa {
 		this.cpf = cpf;
 		this.email = email;
 		this.senha = senha;
+		addPerfil(Perfil.CLIENTE);
+
 	}
 	public Integer getId() {
 		return id;
@@ -60,7 +62,7 @@ public abstract class Pessoa {
 	}
 	public Set<Perfil> getPerfis() {
 		return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
-	}
+	} q	'
 	public void addPerfil(Perfil perfil) {
 		this.perfis.add(perfil.getCodigo());
 	}
