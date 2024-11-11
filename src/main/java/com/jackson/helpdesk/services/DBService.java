@@ -45,10 +45,10 @@ public class DBService {
 		Cliente cli4 = new Cliente(null, "Mickey Mouse", "46685156197", "mickey@email.com", "123");
 		Cliente cli5 = new Cliente(null, "Minnie Mouse", "46685156198", "minnie@email.com", "123");
 		Cliente cli6 = new Cliente(null, "Donald Duck", "46685156199", "donald@email.com", "123");
-		Cliente cli7 = new Cliente(null, "Goofy", "46685156200", "goofy@email.com", "123");
-		Cliente cli8 = new Cliente(null, "Bugs Bunny", "46685156201", "bugs@email.com", "123");
-		Cliente cli9 = new Cliente(null, "Tom Cat", "46685156202", "tom@email.com", "123");
-		Cliente cli10 = new Cliente(null, "Jerry Mouse", "46685156203", "jerry@email.com", "123");
+		Cliente cli7 = new Cliente(null, "Goofy", "13316515392", "goofy@email.com", "123");
+		Cliente cli8 = new Cliente(null, "Kalil Baract", "46685196201", "kalil@email.com", "123");
+		Cliente cli9 = new Cliente(null, "Tom Cat", "47895156987", "tom@email.com", "123");
+		Cliente cli10 = new Cliente(null, "Jerry Mouse", "16685156203", "jerry@bool.com", "123");
 
 		Chamado c1 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 01", "Primeiro chamado", tec1, cli1);
 		Chamado c2 = new Chamado(null, Prioridade.ALTA, Status.ENCERRADO, "Chamado 02", "Problema no sistema", tec2, cli2);
