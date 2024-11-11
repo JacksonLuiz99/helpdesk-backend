@@ -27,28 +27,29 @@ public class DBService {
 
 	public void instanciaDB() {
 		
-		Tecnico tec1 = new Tecnico(null, "Jackson", "07717556982", "jackson@email.com", "123");
+		Tecnico tec1 = new Tecnico(null, "Jackson", "07717556982", "jackson@uol.com", "123");
 		tec1.addPerfil(Perfil.ADMIN);
-		Tecnico tec2 = new Tecnico(null, "Scooby-Doo", "09117556983", "scooby@email.com", "123");
-		Tecnico tec3 = new Tecnico(null, "Fred Flintstone", "09987556984", "fred@email.com", "123");
-		Tecnico tec4 = new Tecnico(null, "Homer Simpson", "09987556985", "homer@email.com", "123");
-		Tecnico tec5 = new Tecnico(null, "Bart Simpson", "09987556986", "bart@email.com", "123");
-		Tecnico tec6 = new Tecnico(null, "Tom (Tom & Jerry)", "09987556987", "tom@email.com", "123");
-		Tecnico tec7 = new Tecnico(null, "Jerry (Tom & Jerry)", "09987556988", "jerry@email.com", "123");
-		Tecnico tec8 = new Tecnico(null, "Pikachu", "09987556989", "pikachu@email.com", "123");
-		Tecnico tec9 = new Tecnico(null, "Bugs Bunny", "09987556990", "bugs@email.com", "123");
-		Tecnico tec10 = new Tecnico(null, "Daffy Duck", "09987556991", "daffy@email.com", "123");
+		Tecnico tec2 = new Tecnico(null, "Scooby-Doo", "09117556983", "scooby.doo@hotmail.com", "123");
+		Tecnico tec3 = new Tecnico(null, "Fred Flintstone", "09987556984", "fred.flintstone@gmail.com", "123");
+		Tecnico tec4 = new Tecnico(null, "Homer Simpson", "09987556985", "homer.simpson@outlook.com", "123");
+		Tecnico tec5 = new Tecnico(null, "Bart Simpson", "09987556986", "bart.simpson@yahoo.com", "123");
+		Tecnico tec6 = new Tecnico(null, "Tom (Tom & Jerry)", "09987556987", "tom.jerry@icloud.com", "123");
+		Tecnico tec7 = new Tecnico(null, "Jerry (Tom & Jerry)", "09987556988", "jerry.jerry@gmail.com", "123");
+		Tecnico tec8 = new Tecnico(null, "Pikachu", "09987556989", "pikachu@outlook.com", "123");
+		Tecnico tec9 = new Tecnico(null, "Bugs Bunny", "09987556990", "bugs.bunny@uol.com", "123");
+		Tecnico tec10 = new Tecnico(null, "Daffy Duck", "09987556991", "daffy.duck@hotmail.com", "123");
 
 		Cliente cli1 = new Cliente(null, "Luiz", "46685156194", "luiz@gmail.com", "123");
-		Cliente cli2 = new Cliente(null, "Maria", "46685156195", "maria@gmail.com", "123");
-		Cliente cli3 = new Cliente(null, "João", "46685156196", "joao@gmail.com", "123");
-		Cliente cli4 = new Cliente(null, "Mickey Mouse", "46685156197", "mickey@email.com", "123");
-		Cliente cli5 = new Cliente(null, "Minnie Mouse", "46685156198", "minnie@email.com", "123");
-		Cliente cli6 = new Cliente(null, "Donald Duck", "46685156199", "donald@email.com", "123");
-		Cliente cli7 = new Cliente(null, "Goofy", "13316515392", "goofy@email.com", "123");
-		Cliente cli8 = new Cliente(null, "Kalil Baract", "46685196201", "kalil@email.com", "123");
-		Cliente cli9 = new Cliente(null, "Tom Cat", "47895156987", "tom@email.com", "123");
-		Cliente cli10 = new Cliente(null, "Jerry Mouse", "16685156203", "jerry@bool.com", "123");
+		Cliente cli2 = new Cliente(null, "Maria", "46685156195", "maria@outlook.com", "123");
+		Cliente cli3 = new Cliente(null, "João", "46685156196", "joao@yahoo.com", "123");
+		Cliente cli4 = new Cliente(null, "Mickey Mouse", "46685156197", "mickey.mouse@gmail.com", "123");
+		Cliente cli5 = new Cliente(null, "Minnie Mouse", "46685156198", "minnie.mouse@uol.com", "123");
+		Cliente cli6 = new Cliente(null, "Donald Duck", "46685156199", "donald.duck@icloud.com", "123");
+		Cliente cli7 = new Cliente(null, "Goofy", "13316515392", "goofy@outlook.com", "123");
+		Cliente cli8 = new Cliente(null, "Kalil Baract", "46685196201", "kalil.baract@gmail.com", "123");
+		Cliente cli9 = new Cliente(null, "Tom Cat", "47895156987", "tom.cat@yahoo.com", "123");
+		Cliente cli10 = new Cliente(null, "Jerry Mouse", "16685156203", "jerry.mouse@bol.com.br", "123");
+
 
 		Chamado c1 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 01", "Primeiro chamado", tec1, cli1);
 		Chamado c2 = new Chamado(null, Prioridade.ALTA, Status.ENCERRADO, "Chamado 02", "Problema no sistema", tec2, cli2);
