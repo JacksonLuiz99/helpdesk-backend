@@ -41,6 +41,7 @@ public abstract class Pessoa implements Serializable {
 	
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	protected LocalDate dataCriacao = LocalDate.now();
+	
 	public Pessoa() {
 		super();
 		addPerfil(Perfil.CLIENTE);
