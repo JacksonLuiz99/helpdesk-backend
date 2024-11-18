@@ -30,7 +30,7 @@ public class Chamado implements Serializable {
 	private Prioridade prioridade;
 	private Status status;
 	private String titulo;
-	private String obeservacoes;
+	private String observacoes;
 	
 	@ManyToOne
 	@JoinColumn(name = "tecnico_id")
