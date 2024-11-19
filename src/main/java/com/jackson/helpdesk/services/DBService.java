@@ -50,7 +50,7 @@ public class DBService {
 		Cliente cli9 = new Cliente(null, "Tom Cat", "16427231006", "tom.cat@yahoo.com", "123");
 		Cliente cli10 = new Cliente(null, "Jerry Mouse", "67460320005", "jerry.mouse@bol.com.br", "123");
 
-
+ 
 		Chamado c1 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 01", "Primeiro chamado", tec1, cli1);
 		Chamado c2 = new Chamado(null, Prioridade.ALTA, Status.ENCERRADO, "Chamado 02", "Problema no sistema", tec2, cli2);
 		Chamado c3 = new Chamado(null, Prioridade.BAIXA, Status.ABERTO, "Chamado 03", "Verificação de rede", tec3, cli3);
@@ -59,7 +59,7 @@ public class DBService {
 		Chamado c6 = new Chamado(null, Prioridade.BAIXA, Status.ABERTO, "Chamado 06", "Erro na impressão", tec6, cli6);
 		Chamado c7 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 07", "Problema na rede Wi-Fi", tec7, cli7);
 		Chamado c8 = new Chamado(null, Prioridade.ALTA, Status.ENCERRADO, "Chamado 08", "Erro de login", tec8, cli8);
-		Chamado c9 = new Chamado(null, Prioridade.BAIXA, Status.ABERTO, "Chamado 09", "Problema no acesso ao banco de dados", tec9, cli9);
+		Chamado c9 = new Chamado(null, Prioridade.BAIXA, Status.ABERTO, "Chamado 09", "Problema no acesso ao banco de dados", tec7, cli9);
 		Chamado c10 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 10", "Verificação de segurança", tec10, cli10);
 
 		tecnicoRepository.saveAll(Arrays.asList(tec1, tec2, tec3, tec4, tec5, tec6, tec7, tec8, tec9, tec10));
