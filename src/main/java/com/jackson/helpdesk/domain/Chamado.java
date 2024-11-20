@@ -39,9 +39,9 @@ public class Chamado implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
+	
 	public Chamado() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Chamado(Integer id, Prioridade prioridade, Status status, String titulo, String obeservacoes,
 			Tecnico tecnico, Cliente cliente) {

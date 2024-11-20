@@ -22,7 +22,7 @@ public class TecnicoService {
 		@Autowired
 		private TecnicoRepository repository;
 		@Autowired
-		private PessoaRepository pessoaRepository;
+		private PessoaRepository pessoaRepository; 
 		
 		public Tecnico findById(Integer id) {
 			Optional<Tecnico> obj = repository.findById(id);
