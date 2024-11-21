@@ -3,6 +3,7 @@ package com.jackson.helpdesk.services;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.jackson.helpdesk.domain.Chamado;
@@ -24,31 +25,33 @@ public class DBService {
 	private ClienteRepository clienteRepository;
 	@Autowired
 	private ChamadoRepository chamadoRepository;
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 
 	public void instanciaDB() {
 		
-		Tecnico tec1 = new Tecnico(null, "Jackson", "31874636737", "jackson@uol.com", "123");
+		Tecnico tec1 = new Tecnico(null, "Jackson Luiz", "31874636737", "jackson@uol.com", encoder.encode("123"));
 		tec1.addPerfil(Perfil.ADMIN);
-		Tecnico tec2 = new Tecnico(null, "Scooby-Doo", "17111468708", "scooby.doo@hotmail.com", "123");
-		Tecnico tec3 = new Tecnico(null, "Fred Flintstone", "84598048018", "fred.flintstone@gmail.com", "123");
-		Tecnico tec4 = new Tecnico(null, "Homer Simpson", "28964101391", "homer.simpson@outlook.com", "123");
-		Tecnico tec5 = new Tecnico(null, "Bart Simpson", "94829299428", "bart.simpson@yahoo.com", "123");
-		Tecnico tec6 = new Tecnico(null, "Tom (Tom & Jerry)", "73414030047", "tom.jerry@icloud.com", "123");
-		Tecnico tec7 = new Tecnico(null, "Jerry (Tom & Jerry)", "54567179056", "jerry.jerry@gmail.com", "123");
-		Tecnico tec8 = new Tecnico(null, "Pikachu", "85364725022", "pikachu@outlook.com", "123");
-		Tecnico tec9 = new Tecnico(null, "Bugs Bunny", "80348021070", "bugs.bunny@uol.com", "123");
-		Tecnico tec10 = new Tecnico(null, "Daffy Duck", "57678561091", "daffy.duck@hotmail.com", "123");
+		Tecnico tec2 = new Tecnico(null, "Scooby-Doo", "17111468708", "scooby.doo@hotmail.com", encoder.encode("123"));
+		Tecnico tec3 = new Tecnico(null, "Fred Flintstone", "84598048018", "fred.flintstone@gmail.com", encoder.encode("123"));
+		Tecnico tec4 = new Tecnico(null, "Homer Simpson", "28964101391", "homer.simpson@outlook.com", encoder.encode("123"));
+		Tecnico tec5 = new Tecnico(null, "Bart Simpson", "94829299428", "bart.simpson@yahoo.com", encoder.encode("123"));
+		Tecnico tec6 = new Tecnico(null, "Tom (Tom & Jerry)", "73414030047", "tom.jerry@icloud.com", encoder.encode("123"));
+		Tecnico tec7 = new Tecnico(null, "Jerry (Tom & Jerry)", "54567179056", "jerry.jerry@gmail.com", encoder.encode("123"));
+		Tecnico tec8 = new Tecnico(null, "Pikachu", "85364725022", "pikachu@outlook.com", encoder.encode("123"));
+		Tecnico tec9 = new Tecnico(null, "Bugs Bunny", "80348021070", "bugs.bunny@uol.com", encoder.encode("123"));
+		Tecnico tec10 = new Tecnico(null, "Daffy Duck", "57678561091", "daffy.duck@hotmail.com", encoder.encode("123"));
 		
-		Cliente cli1 = new Cliente(null, "Luiz", "10414231104", "luiz@gmail.com", "123");
-		Cliente cli2 = new Cliente(null, "Maria", "67442322310", "maria@outlook.com", "123");
-		Cliente cli3 = new Cliente(null, "João", "21022312081", "joao@yahoo.com", "123");
-		Cliente cli4 = new Cliente(null, "Mickey Mouse", "80523674686", "mickey.mouse@gmail.com", "123");
-		Cliente cli5 = new Cliente(null, "Minnie Mouse", "50865652279", "minnie.mouse@uol.com", "123");
-		Cliente cli6 = new Cliente(null, "Donald Duck", "27986926015", "donald.duck@icloud.com", "123");
-		Cliente cli7 = new Cliente(null, "Goofy", "09956060054", "goofy@outlook.com", "123");
-		Cliente cli8 = new Cliente(null, "Kalil Baract", "44909088067", "kalil.baract@gmail.com", "123");
-		Cliente cli9 = new Cliente(null, "Tom Cat", "16427231006", "tom.cat@yahoo.com", "123");
-		Cliente cli10 = new Cliente(null, "Jerry Mouse", "67460320005", "jerry.mouse@bol.com.br", "123");
+		Cliente cli1 = new Cliente(null, "Luizinho Poderoso", "10414231104", "poderoso@gmail.com", encoder.encode("123"));
+		Cliente cli2 = new Cliente(null, "Maria", "67442322310", "maria@outlook.com", encoder.encode("123"));
+		Cliente cli3 = new Cliente(null, "João Kaue", "21022312081", "joaokaue@yahoo.com", encoder.encode("123"));
+		Cliente cli4 = new Cliente(null, "Mickey Mouse", "80523674686", "mickey.mouse@gmail.com", encoder.encode("123"));
+		Cliente cli5 = new Cliente(null, "Minnie Mouse", "50865652279", "minnie.mouse@uol.com", encoder.encode("123"));
+		Cliente cli6 = new Cliente(null, "Donald Duck", "27986926015", "donald.duck@icloud.com", encoder.encode("123"));
+		Cliente cli7 = new Cliente(null, "Goofy", "09956060054", "goofy@outlook.com", encoder.encode("123"));
+		Cliente cli8 = new Cliente(null, "Kalil Baract", "44909088067", "kalil.baract@gmail.com", encoder.encode("123"));
+		Cliente cli9 = new Cliente(null, "Tom Cat", "16427231006", "tom.cat@yahoo.com", encoder.encode("123"));
+		Cliente cli10 = new Cliente(null, "Jerry Mouse", "67460320005", "jerry.mouse@bol.com.br", encoder.encode("123"));
 
  
 		Chamado c1 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 01", "Primeiro chamado", tec1, cli1);
