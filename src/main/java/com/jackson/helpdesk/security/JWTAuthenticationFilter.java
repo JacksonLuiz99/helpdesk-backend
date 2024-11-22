@@ -37,7 +37,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 					new UsernamePasswordAuthenticationToken(creds.getEmail(), creds.getSenha(), new ArrayList<>());
 			Authentication authentication = authenticationManager.authenticate(authenticationToken);
 			return authentication;
-		} catch (Exception e) {
+		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
 	}
@@ -58,7 +58,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 			AuthenticationException failed) throws IOException, ServletException {
 		
 		response.setStatus(401);
-		response.setContentType("application/jason");
+		response.setContentType("application/json");
 		response.getWriter().append(json());
 	}
 
