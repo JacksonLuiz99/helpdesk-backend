@@ -3,7 +3,7 @@ package com.jackson.helpdesk.domain.enums;
 public enum Perfil {
 	
 	ADMIN(0, "ROLE_ADMIN"),
-	CLIENTE(1, "ROLE-CLIENTE"),
+	CLIENTE(1, "ROLE_CLIENTE"),
 	TECNICO(2, "ROLE_TECNICO");
 	
 	private Integer codigo;
