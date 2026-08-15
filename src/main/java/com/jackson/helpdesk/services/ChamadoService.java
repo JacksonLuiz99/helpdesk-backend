@@ -58,7 +58,7 @@ public class ChamadoService {
 			chamado.setId(obj.getId());
 		}
 		
-		if(obj.getStatus().equals(1)) {
+		if(obj.getStatus().equals(2)) {
 			chamado.setDataFechamento(LocalDate.now());
 		}
 		
