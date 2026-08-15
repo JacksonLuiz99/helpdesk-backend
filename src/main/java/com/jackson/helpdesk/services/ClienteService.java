@@ -63,12 +63,12 @@ public class ClienteService {
  
 		private void validaPorCpfEEmail(ClienteDTO objDTO) {
 			Optional<Pessoa> obj = pessoaRepository.findByCpf(objDTO.getCpf());
-			if (obj.isPresent() && obj.get().getId() != objDTO.getId()) {
+			if (obj.isPresent() && !obj.get().getId().equals(objDTO.getId())) {
 				throw new DataIntegrityViolationException("Este CPF já está cadastrado no sistema, por favor insira um novo CPF!");
 			}
-			
+
 			obj = pessoaRepository.findByEmail(objDTO.getEmail());
-			if (obj.isPresent() && obj.get().getId() != objDTO.getId()) {
+			if (obj.isPresent() && !obj.get().getId().equals(objDTO.getId())) {
 				throw new DataIntegrityViolationException("Este E-mail já está cadastrado no sistema, por favor insira um novo E-mail!");
 			}
 			
