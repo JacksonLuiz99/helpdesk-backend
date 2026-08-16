@@ -2,6 +2,8 @@
 
 API REST em Spring Boot para um sistema de chamados de suporte técnico (helpdesk), com autenticação via JWT. É o backend consumido pelo [`helpdesk-frontend`](https://github.com/JacksonLuiz99/helpdesk-frontend).
 
+Em produção: `https://helpdesk-backend-yqom.onrender.com`
+
 ## Stack
 
 - Java 11, Spring Boot 2.3.12, Maven
@@ -70,5 +72,24 @@ Banco de dados: usamos o **Postgres gerenciado do Render** (driver `org.postgres
 - `DATABASE_PASSWORD` = a parte `senha` da URL original
 
 Use a **Internal Database URL** do Render se o banco estiver na mesma região/projeto que o Web Service (mais rápido e não sai pra internet); a External só é necessária pra conectar de fora do Render.
+
+**Memória**: o plano free do Render tem 512MB, e o app já apanhou de `SIGKILL` (status 137) duas vezes por estourar isso durante o cold start — a JVM sobe pedindo mais memória do que o container tem. O `Dockerfile` já limita isso (`-Xmx256m -XX:MaxMetaspaceSize=128m -XX:ReservedCodeCacheSize=64m`), validado localmente rodando o container com `docker run --memory=512m` contra um Postgres real. Se subir de plano (mais RAM), esses limites podem ser relaxados.
+
+### Primeiro acesso em produção
+
+Diferente dos perfis `test`/`dev`, o perfil `prod` **não** popula dados de exemplo — um Postgres novo fica com a tabela `pessoa` vazia. Como criar técnico/cliente exige ser ADMIN, e não existe nenhum ainda, o primeiro admin precisa ser inserido direto no banco (via `psql` ou um cliente Postgres qualquer, usando a Database URL do Render):
+
+```sql
+WITH novo AS (
+  INSERT INTO pessoa (nome, cpf, email, senha, data_criacao, dtype)
+  VALUES ('Administrador', '52998224725', 'seu-email@exemplo.com',
+          '<hash bcrypt da senha>', CURRENT_DATE, 'Tecnico')
+  RETURNING id
+)
+INSERT INTO perfis (pessoa_id, perfis)
+SELECT id, p FROM novo, (VALUES (0), (1)) AS perfil(p);
+```
+
+O hash bcrypt precisa ser gerado com `BCryptPasswordEncoder` (mesma lib que o `ClienteService`/`TecnicoService` usam) — não dá pra inventar uma string, tem que ser um hash bcrypt de verdade gerado com essa classe. Depois de criado, esse admin consegue cadastrar o resto pela própria interface, sem precisar mexer no banco de novo.
 
 Mais detalhes de arquitetura (camadas, DTOs, segurança) em `CLAUDE.md`.
