@@ -38,18 +38,26 @@ public class ClienteService {
 
 		public Cliente create(ClienteDTO objDTO) {
 			objDTO.setId(null);
+			if (objDTO.getSenha() == null || objDTO.getSenha().isBlank()) {
+				throw new DataIntegrityViolationException("A senha é obrigatória");
+			}
 			objDTO.setSenha(encoder.encode(objDTO.getSenha()));
 			validaPorCpfEEmail(objDTO);
 			Cliente newObj = new Cliente(objDTO);
 			return repository.save(newObj);
 		}
-		
+
 		public Cliente update(Integer id, @Valid ClienteDTO objDTO) {
 			objDTO.setId(id);
 			Cliente oldObj = findById(id);
 			validaPorCpfEEmail(objDTO);
+			if (objDTO.getSenha() == null || objDTO.getSenha().isBlank()) {
+				objDTO.setSenha(oldObj.getSenha());
+			} else {
+				objDTO.setSenha(encoder.encode(objDTO.getSenha()));
+			}
 			oldObj = new Cliente(objDTO);
-			return repository.save(oldObj); 
+			return repository.save(oldObj);
 		}
 		
 		public void delete(Integer id) {

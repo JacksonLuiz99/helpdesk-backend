@@ -22,7 +22,6 @@ public class TecnicoDTO  implements Serializable {
 	protected String cpf;
 	@NotNull(message = "O EMAIL é requerido")
 	protected String email;
-	@NotNull(message = "A SENHA é requerida")
 	protected String senha;
 	protected Set<Integer> perfis = new HashSet<>();
 	
