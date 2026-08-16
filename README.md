@@ -7,7 +7,7 @@ API REST em Spring Boot para um sistema de chamados de suporte técnico (helpdes
 - Java 11, Spring Boot 2.3.12, Maven
 - Spring Data JPA, Spring Security, JWT (`jjwt`)
 - H2 em memória (perfil `test`) ou MySQL (perfil `dev`)
-- Deploy: Railway (Nixpacks)
+- Deploy: Render (Docker)
 
 ## Como rodar
 
@@ -46,9 +46,11 @@ Usuários de teste seedados no perfil `test` (ver `DBService`):
 ./mvnw test
 ```
 
-## Deploy (Railway)
+## Deploy (Render)
 
-`railway.json` já configura o build (Nixpacks). O perfil `prod` (`application-prod.properties`) espera as seguintes variáveis de ambiente, configuradas no projeto Railway — nenhuma delas tem valor padrão, então o app não sobe sem elas:
+O `Dockerfile` na raiz faz um build multi-stage (Maven → JRE) e já foi testado localmente (`docker build` + `docker run`). No Render, crie um **Web Service** apontando pro repositório — o `Dockerfile` é detectado automaticamente, não precisa configurar build/start command na mão.
+
+A aplicação lê a porta de `PORT` (padrão 8080 se a variável não existir, então local continua igual). O perfil `prod` (`application-prod.properties`) espera as seguintes variáveis de ambiente — nenhuma delas tem valor padrão, então o app não sobe sem elas:
 
 | Variável | Descrição |
 |---|---|
@@ -59,6 +61,6 @@ Usuários de teste seedados no perfil `test` (ver `DBService`):
 | `JWT_SECRET` | segredo usado pra assinar o JWT — **não reaproveite o valor padrão de dev** |
 | `CORS_ORIGINS` | origem(s) do frontend em produção (ex.: URL do deploy no Vercel) |
 
-`JWT_EXPIRATION` é opcional (padrão: 1800000 ms / 30 min).
+`JWT_EXPIRATION` é opcional (padrão: 1800000 ms / 30 min). O Render não provisiona banco de dados por padrão — vai precisar de um serviço de banco à parte (Render tem Postgres gerenciado; pra MySQL, algo como um addon externo ou outro provedor).
 
 Mais detalhes de arquitetura (camadas, DTOs, segurança) em `CLAUDE.md`.
