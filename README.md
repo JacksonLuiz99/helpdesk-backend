@@ -55,12 +55,20 @@ A aplicação lê a porta de `PORT` (padrão 8080 se a variável não existir, e
 | Variável | Descrição |
 |---|---|
 | `SPRING_PROFILES_ACTIVE` | `prod` |
-| `DATABASE_URL` | URL JDBC do banco (ex.: `jdbc:mysql://host:3306/helpdesk`) |
+| `DATABASE_URL` | URL JDBC do banco (ex.: `jdbc:postgresql://host:5432/helpdesk`) |
 | `DATABASE_USERNAME` | usuário do banco |
 | `DATABASE_PASSWORD` | senha do banco |
 | `JWT_SECRET` | segredo usado pra assinar o JWT — **não reaproveite o valor padrão de dev** |
 | `CORS_ORIGINS` | origem(s) do frontend em produção (ex.: URL do deploy no Vercel) |
 
-`JWT_EXPIRATION` é opcional (padrão: 1800000 ms / 30 min). O Render não provisiona banco de dados por padrão — vai precisar de um serviço de banco à parte (Render tem Postgres gerenciado; pra MySQL, algo como um addon externo ou outro provedor).
+`JWT_EXPIRATION` é opcional (padrão: 1800000 ms / 30 min).
+
+Banco de dados: usamos o **Postgres gerenciado do Render** (driver `org.postgresql` já está no `pom.xml`, ao lado do MySQL usado localmente no perfil `dev`). O Render mostra a conexão no formato `postgres://usuario:senha@host:porta/banco` — isso **não** é o formato que o Spring espera. Converta assim:
+
+- `DATABASE_URL` = `jdbc:postgresql://host:porta/banco` (troca `postgres://` por `jdbc:postgresql://` e tira o usuário/senha da URL)
+- `DATABASE_USERNAME` = a parte `usuario` da URL original
+- `DATABASE_PASSWORD` = a parte `senha` da URL original
+
+Use a **Internal Database URL** do Render se o banco estiver na mesma região/projeto que o Web Service (mais rápido e não sai pra internet); a External só é necessária pra conectar de fora do Render.
 
 Mais detalhes de arquitetura (camadas, DTOs, segurança) em `CLAUDE.md`.
